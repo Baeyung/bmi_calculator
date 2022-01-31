@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'customWidgets/IconContent.dart';
+import 'customWidgets/ReusableCard.dart';
+
+const double calculateButtonHeight = 80;
+const Color bgcWidget = Color(0xff1a1e33);
 
 class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
@@ -22,37 +28,55 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: const [
                 Expanded(
-                  child: ReusableCard(colour: Color(0xff1a1e33)),
+                  child: ReusableCard(
+                    colour: bgcWidget,
+                    cardChild: TopWidgets(
+                      widgetIcons: FontAwesomeIcons.mars,
+                      str: 'MALE',
+                    ),
+                  ),
                 ),
-                Expanded(child: ReusableCard(colour: Color(0xff1a1e33))),
+                Expanded(
+                  child: ReusableCard(
+                    colour: bgcWidget,
+                    cardChild: TopWidgets(
+                      widgetIcons: FontAwesomeIcons.venus,
+                      str: 'FEMALE',
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
-          const Expanded(child: ReusableCard(colour: Color(0xff1a1e33))),
+          const Expanded(
+            child: ReusableCard(colour: bgcWidget),
+          ),
           Expanded(
             child: Row(
               children: const [
-                Expanded(child: ReusableCard(colour: Color(0xff1a1e33))),
-                Expanded(child: ReusableCard(colour: Color(0xff1a1e33))),
+                Expanded(
+                  child: ReusableCard(colour: bgcWidget),
+                ),
+                Expanded(
+                  child: ReusableCard(colour: bgcWidget),
+                ),
               ],
             ),
           ),
+          Container(
+            width: double.infinity,
+            height: calculateButtonHeight,
+            margin: const EdgeInsets.only(
+              top: 10,
+              bottom: 10,
+            ),
+            decoration: BoxDecoration(
+              color: const Color(0xffeb1555),
+              borderRadius: BorderRadius.circular(10),
+            ),
+          )
         ],
       ),
-    );
-  }
-}
-
-class ReusableCard extends StatelessWidget {
-  final Color colour;
-  const ReusableCard({Key? key, required this.colour}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(15),
-      decoration:
-          BoxDecoration(color: colour, borderRadius: BorderRadius.circular(10)),
     );
   }
 }
