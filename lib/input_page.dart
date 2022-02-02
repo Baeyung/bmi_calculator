@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'custom_widgets/icon_content.dart';
 import 'custom_widgets/reusable_card.dart';
+import 'constants/konstants.dart';
 
-const double calculateButtonHeight = 80;
-const Color activeCardColor = Color(0xff1a1e33);
-const Color inactiveCardColor = Color(0xff111328);
 enum Gender { male, female, none }
 
 class InputPage extends StatefulWidget {
@@ -17,6 +15,7 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender selectedGender = Gender.none;
+  int height = 180;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,8 +38,8 @@ class _InputPageState extends State<InputPage> {
                     },
                     child: ReusableCard(
                       colour: selectedGender == Gender.male
-                          ? activeCardColor
-                          : inactiveCardColor,
+                          ? kActiveCardColor
+                          : kInactiveCardColor,
                       cardChild: const TopWidgets(
                         widgetIcons: FontAwesomeIcons.mars,
                         str: 'MALE',
@@ -57,8 +56,8 @@ class _InputPageState extends State<InputPage> {
                     },
                     child: ReusableCard(
                       colour: selectedGender == Gender.female
-                          ? activeCardColor
-                          : inactiveCardColor,
+                          ? kActiveCardColor
+                          : kInactiveCardColor,
                       cardChild: const TopWidgets(
                         widgetIcons: FontAwesomeIcons.venus,
                         str: 'FEMALE',
@@ -69,24 +68,58 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          const Expanded(
-            child: ReusableCard(colour: activeCardColor),
+          Expanded(
+            child: ReusableCard(
+              colour: kActiveCardColor,
+              cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'HEIGHT',
+                    style: kTextStyle,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    textBaseline: TextBaseline.alphabetic,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    children: [
+                      Text(
+                        height.toString(),
+                        style: kNumberTextStyle,
+                      ),
+                      const Text('cm', style: kTextStyle)
+                    ],
+                  ),
+                  Slider(
+                      min: kMinHeight,
+                      max: kMaxHeight,
+                      activeColor: kActiveSliderColor,
+                      inactiveColor: kInactiveSliderColor,
+                      value: height.toDouble(),
+                      onChanged: (double newValue) {
+                        setState(() {
+                          height = newValue.round();
+                        });
+                      })
+                ],
+              ),
+            ),
           ),
           Expanded(
             child: Row(
               children: const [
                 Expanded(
-                  child: ReusableCard(colour: activeCardColor),
+                  child: ReusableCard(colour: kActiveCardColor),
                 ),
                 Expanded(
-                  child: ReusableCard(colour: activeCardColor),
+                  child: ReusableCard(colour: kActiveCardColor),
                 ),
               ],
             ),
           ),
           Container(
             width: double.infinity,
-            height: calculateButtonHeight,
+            height: kCalculateButtonHeight,
             margin: const EdgeInsets.only(
               top: 10,
               bottom: 10,

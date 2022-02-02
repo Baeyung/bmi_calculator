@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:bmi_calculator/constants/konstants.dart';
 
 class TopWidgets extends StatelessWidget {
   final IconData widgetIcons;
@@ -19,7 +20,7 @@ class TopWidgets extends StatelessWidget {
           height: 15,
         ),
         Text(str,
-            style: const TextStyle(color: Color(0xff8d8e98), fontSize: 18))
+            style: kTextStyle,)
       ],
     );
   }
