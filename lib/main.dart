@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/constants/konstants.dart';
 import 'package:flutter/material.dart';
 import './input_page.dart';
 
@@ -14,6 +15,12 @@ class BmiCalculator extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         primaryColor: const Color(0xFF0B0D22),
         scaffoldBackgroundColor: const Color(0xFF0B0D22),
+        sliderTheme: SliderTheme.of(context).copyWith(
+          activeTrackColor: kActiveSliderColor,
+          inactiveTrackColor: kInactiveSliderColor,
+          thumbColor: kThumbColorSlider,
+          overlayColor: kThumbElevationColor,
+        ),
       ),
       home: const InputPage(),
     );
