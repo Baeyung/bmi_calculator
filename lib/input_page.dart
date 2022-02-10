@@ -4,6 +4,7 @@ import 'custom_widgets/icon_content.dart';
 import 'custom_widgets/reusable_card.dart';
 import 'constants/konstants.dart';
 import 'custom_widgets/round_icon_button.dart';
+import 'custom_widgets/bottom_button.dart';
 
 enum Gender { male, female, none }
 
@@ -196,17 +197,9 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Container(
-            width: double.infinity,
-            height: kCalculateButtonHeight,
-            margin: const EdgeInsets.only(
-              top: 10,
-              bottom: 10,
-            ),
-            decoration: BoxDecoration(
-              color: kBottomBarColor,
-              borderRadius: BorderRadius.circular(10),
-            ),
+          BottomButton(
+            buttonText: 'CALCULATE',
+            onTap: () => Navigator.pushNamed(context, '/ResultPage'),
           )
         ],
       ),

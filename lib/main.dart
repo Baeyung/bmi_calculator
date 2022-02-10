@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/result_page.dart';
 import 'package:bmi_calculator/constants/konstants.dart';
 import 'package:flutter/material.dart';
 import './input_page.dart';
@@ -22,7 +23,11 @@ class BmiCalculator extends StatelessWidget {
           overlayColor: kThumbElevationColor,
         ),
       ),
-      home: const InputPage(),
+      routes: {
+        '/': (context) => const InputPage(),
+        '/ResultPage': (context) => const ResultPage(),
+      },
+      initialRoute: '/',
     );
   }
 }

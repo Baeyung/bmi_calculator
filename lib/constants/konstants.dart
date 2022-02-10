@@ -25,3 +25,28 @@ const kNumberTextStyle = TextStyle(
   fontWeight: FontWeight.w900,
   fontSize: 50,
 );
+const kBigTextStyle = TextStyle(
+  fontWeight: FontWeight.bold,
+  fontSize: 80,
+);
+const kResultTextStyle = TextStyle(
+  fontWeight: FontWeight.bold,
+  color: Colors.green,
+  fontSize: 25,
+);
+const kResultCommentTextStyle = TextStyle(
+  //fontWeight: FontWeight.bold,
+  fontSize: 25,
+);
+const kButtonTextStyle = TextStyle(
+  fontWeight: FontWeight.bold,
+  fontSize: 25,
+);
+const kResultTitleTextStyle = TextStyle(
+  fontWeight: FontWeight.bold,
+  fontSize: 50,
+);
+BoxDecoration kContainerDecoration = BoxDecoration(
+  color: kActiveCardColor,
+  borderRadius: BorderRadius.circular(10),
+);
