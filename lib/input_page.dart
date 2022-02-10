@@ -1,3 +1,5 @@
+import 'package:bmi_calculator/Functionality/bmi_functionality.dart';
+import 'package:bmi_calculator/result_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'custom_widgets/icon_content.dart';
@@ -24,8 +26,6 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: const Color(0xff0B0D22),
         title: const Text('BMI Calcultor'),
       ),
       body: Column(
@@ -198,9 +198,23 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           BottomButton(
-            buttonText: 'CALCULATE',
-            onTap: () => Navigator.pushNamed(context, '/ResultPage'),
-          )
+              buttonText: 'CALCULATE',
+              onTap: () {
+                BMIFunctionality bmiFunctionality = BMIFunctionality(
+                  height: height.toDouble(),
+                  weight: weight.toDouble(),
+                );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ResultPage(
+                      bmi: bmiFunctionality.calculateBmi(),
+                      resultComment: bmiFunctionality.returnComment(),
+                      resultStatus: bmiFunctionality.returnStatus(),
+                    ),
+                  ),
+                );
+              })
         ],
       ),
     );
